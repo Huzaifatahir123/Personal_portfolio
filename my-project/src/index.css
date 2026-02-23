@@ -1,0 +1,11 @@
+
+
+@import "tailwindcss";
+:root{
+    font-family: "Sora";
+}
+@theme{
+    --color-primary:#000000;
+    --color-text:#FFFFFF;
+    --color-text-secondary:#000000;
+}
