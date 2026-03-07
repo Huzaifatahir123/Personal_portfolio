@@ -1,11 +1,21 @@
 import Logo from "./Vector.png";
 import HeroImg from "./Frame 20.png"
-import javaScript from "./icon-javscript.png"
-import git from "./Git.png"
 import AboutPic from "./About.png"
 import ProjectImg from "./Project.png"
+import javaScript from './javaScript.svg'
+import git from './git.svg'
+import framer from './framer.svg'
+import express from './express.svg'
+import mongodb from './mongodb.svg'
+import node from './nodedotjs.svg'
+import react from './react.svg'
+import tailwind from './tailwindcss.svg'
+import postgre from './postgresql.svg'
+import redux from './redux.svg'
+
+
 export const  assests = {
-         Logo,
-         HeroImg,javaScript,git,AboutPic,ProjectImg
+         Logo,redux,
+         HeroImg,git,AboutPic,ProjectImg,javaScript,postgre,tailwind,express,mongodb,react,node,framer
 } 
 export default assests
