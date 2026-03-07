@@ -37,7 +37,7 @@ const Hero = () => {
         </div>
         
    
-  <div className="flex justify-between w-[60%] sm:mt-10 max-sm:mt-5 gap-3 items-center">
+  <div className="flex  w-[60%] sm:mt-10 max-sm:mt-5 gap-3 items-center">
   
   {socialIcons.map(({Icon,link})=>(
         <div className="border-2 border-text-secondary p-2 rounded-sm">
