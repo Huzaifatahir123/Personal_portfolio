@@ -5,7 +5,7 @@ const Contact = () => {
     const inputCss = `border p-2 rounded-sm outline-none`
   return (
     <>
-    <h1 className='text-4xl text-center py-6'>Contact Us</h1>
+    <h1 className='text-5xl text-center py-6'>Contact Us</h1>
     <div className='px-6 py-6 sm:px-14 md:px-16 flex  max-sm:justify-center max-sm:items-center max-sm:flex-col-reverse max-md:justify-center max-md:items-center  gap-10 max-md:flex-wrap'>
         
         <div className='md:w-[40%]'>
@@ -27,7 +27,7 @@ const Contact = () => {
             </form>
         </div>
         <div className='flex md:w-[60%] flex-col gap-2'>
-            <h1 className='text-6xl text-wrap max-md:text-center'>Lets talk for Something special</h1>
+            <h1 className='text-3xl text-wrap max-md:text-center'>Lets talk for Something special</h1>
             <p className='text-lg max-md:text-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo cum dolor voluptate ex iure ducimus, quos ut quis aspernatur placeat suscipit possimus laboriosam maiores eius aperiam commodi rerum nisi.</p>
             <p className='text-sm font-bold max-md:text-center'>h905923@gmail.com</p>
             <p className='text-sm font-bold max-md:text-center'>+923256797391</p>
