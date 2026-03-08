@@ -1,6 +1,8 @@
-import React from "react";
+
 import assests from "../assets/assests";
 import {Download} from "lucide-react"
+import {useScroll,useTransform,motion, useSpring} from "framer-motion"
+import { useRef } from "react";
 
 const Skills = () => {
   const Skills = [
@@ -16,21 +18,40 @@ const Skills = () => {
     {icon:assests.redux,skill:"Redux"},
     
   ];
+    const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+    const scale = useTransform(scrollYProgress, [0, 0.5 ,1], [0.5, 1 , 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1 , 0.8]);
+  
+
   return (
     <>
-      <div className="px-10 py-6 sm:px-14 md:px-16 flex flex-col  lg:px-28">
-       <center> <h1>My Skills</h1> </center> 
-        <div className="flex max-sm:justify-center max-sm:items-start flex-wrap sm:gap-6 max-sm:gap-5 sm:items-center   py-10 ">
+      <motion.div ref={ref} className="px-10  py-6 sm:px-14 md:px-16 flex flex-col  lg:px-28">
+       <center> <motion.h1 className="text-5xl" >My Skills</motion.h1> </center> 
+        <motion.div className="flex max-sm:justify-center max-sm:items-start flex-wrap sm:gap-6 max-sm:gap-5 sm:items-center   py-10 ">
             {
-                Skills.map(({icon,skill})=>(
-                    <div className="flex flex-col w-32 rounded-xs gap-2 sm:w-44 border-2 border-text-secondary p-2">
-                         <img src={icon} alt="" />
-                         <h1 className="text-sm">{skill}</h1>
-                    </div>
-                ))
+                Skills.map(({icon,skill , },index)=>{
+                  const isLeft = index % 2 == 0 ;
+                      const xValue  = useTransform(scrollYProgress,[0,1],[isLeft ? -150 : 150 , isLeft ? 150:-150 ])
+                      const y = useSpring(xValue,{
+                        damping:70,
+                        stiffness:300,
+                        
+                      })
+                    return (
+                    <motion.div key={index} style={{y}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border-2 border-text-secondary p-2">
+                         <motion.img style={{opacity,scale}} src={icon} alt="" />
+                         <motion.h1 className="text-sm">{skill}</motion.h1>
+                    </motion.div>
+                    )
+})
             }
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };
