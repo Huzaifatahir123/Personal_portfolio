@@ -31,7 +31,7 @@ const Skills = () => {
   return (
     <>
       <motion.div ref={ref} className="px-10  py-6 sm:px-14 md:px-16 flex flex-col  lg:px-28">
-       <center> <motion.h1 className="text-5xl" >My Skills</motion.h1> </center> 
+       <center> <motion.h1 className="text-3xl" >My <span className="text-3xl font-bold"> Skills</span> </motion.h1> </center> 
         <motion.div className="flex max-sm:justify-center max-sm:items-start flex-wrap sm:gap-6 max-sm:gap-5 sm:items-center   py-10 ">
             {
                 Skills.map(({icon,skill , },index)=>{

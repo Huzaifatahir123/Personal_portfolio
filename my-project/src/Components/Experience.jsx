@@ -8,8 +8,8 @@ const Experience = () => {
 ];
   return (
     <>
-      <div className="bg-primary text-text px-16 py-12 sm:px-14 md:px-16 lg:px-28 flex flex-col justify-center items-center gap-8">
-        <h1 className="text-4xl">My Experience</h1>
+      <div className="bg-primary text-text px-16 py-24 sm:px-14 md:px-16 lg:px-28 flex flex-col justify-center items-center gap-8">
+        <h1 className="text-4xl">My <span className="text-4xl font-bold">Experience</span></h1>
         <div className="flex flex-wrap gap-6 ">
            {
             Experience.map((Ele)=>(

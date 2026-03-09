@@ -23,8 +23,8 @@ const Projects = () => {
     }]
   return (
     <>
-    <div className='bg-primary text-text px-12 py-8 sm:px-14 md:px-16  flex flex-col '>
-        <h1 className='text-center text-5xl '>Projects</h1>
+    <div className='bg-primary text-text px-12 py-24 sm:px-14 md:px-16  flex flex-col '>
+        <h1 className='text-center text-5xl '> Projects</h1>
         <div className='flex flex-wrap py-12  max-md:justify-center items-center'>
             {projects.map((Ele,i)=>(
                <div className={`flex  flex-wrap max-md:flex-col ${i % 2 ? `flex-row-reverse`:"flex-row"}`}>

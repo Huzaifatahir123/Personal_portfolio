@@ -4,7 +4,7 @@ import assests from "../assets/assests";
 const AboutUs = () => {
   return (
     <>
-    <h1 className="py-6 text-center text-3xl">ABout Us</h1>
+    <h1 className="py-12 text-center text-3xl">ABout <span className="text-3xl font-bold">ME</span></h1>
       <div className="px-10 py-6 sm:px-14 md:px-16 lg:px-28 flex max-md:flex-wrap gap-2  ">
         
         <div className="md:w-[50%]">
