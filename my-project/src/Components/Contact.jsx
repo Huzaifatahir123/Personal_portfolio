@@ -5,7 +5,7 @@ const Contact = () => {
     const inputCss = `border p-2 rounded-sm outline-none`
   return (
     <>
-    <h1 className='text-5xl text-center py-6'>Contact Us</h1>
+    
     <div className='px-6 py-6 sm:px-14 md:px-16 flex  max-sm:justify-center max-sm:items-center max-sm:flex-col-reverse max-md:justify-center max-md:items-center  gap-10 max-md:flex-wrap'>
         
         <div className='md:w-[40%]'>

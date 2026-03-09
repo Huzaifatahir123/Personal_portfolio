@@ -25,7 +25,7 @@ const Skills = () => {
     offset: ["start end", "end start"]
   });
     const scale = useTransform(scrollYProgress, [0, 0.5 ,1], [0.5, 1 , 0.8]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1 , 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.5,1], [0, 0.3 , 1,0.8]);
   
 
   return (
@@ -36,14 +36,22 @@ const Skills = () => {
             {
                 Skills.map(({icon,skill , },index)=>{
                   const isLeft = index % 2 == 0 ;
-                      const xValue  = useTransform(scrollYProgress,[0,1],[isLeft ? -150 : 150 , isLeft ? 150:-150 ])
-                      const y = useSpring(xValue,{
+                      const xValue  = useTransform(scrollYProgress,[0,0.5],[isLeft ? -150 : 150 , 0 ])
+                      const x = useSpring(xValue,{
                         damping:70,
                         stiffness:300,
                         
                       })
+                      const start = index * 0.05; 
+                      const end = start + 0.3;
+                      const opacity = useTransform(
+    scrollYProgress, 
+    [start, end > 1 ? 1 : end], 
+    [0, 1]
+  );
+ 
                     return (
-                    <motion.div key={index} style={{y}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border-2 border-text-secondary p-2">
+                    <motion.div key={index} style={{x}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border-2 border-text-secondary p-2">
                          <motion.img style={{opacity,scale}} src={icon} alt="" />
                          <motion.h1 className="text-sm">{skill}</motion.h1>
                     </motion.div>
