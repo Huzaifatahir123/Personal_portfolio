@@ -8,7 +8,7 @@ const Projects = () => {
     
       const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start 0.9", "end 0.9"],
+        offset: ["start end", "end 0.9"],
       });
     
       // 1. Create unique parallax speeds for each card
@@ -55,8 +55,8 @@ const Projects = () => {
             {projects.map((Ele,i)=>{
                  const start = (i+1) * 0.2; 
                       const end = start + 0.2;
-                      const scale = useTransform(scrollYProgress,[start, end > 1 ? 1 : end],[0,1])
-                 const opacity = useTransform(scrollYProgress, [start, end > 1 ? 1 : end], [0, 1]);
+                      const scale = useTransform(scrollYProgress,[start, end > 1 ? 1 : end],[0.7,1])
+                 const opacity = useTransform(scrollYProgress, [start, end > 1 ? 1 : end], [0.7, 1]);
 
 return(
                <motion.div style={{y:Ele.y,opacity,scale}} className={`flex   flex-wrap max-md:flex-col ${i % 2 ? `flex-row-reverse`:"flex-row"}`}>
