@@ -11,9 +11,7 @@ const AboutUs = () => {
       target: ref,
       offset: ["start 0.7", "end 0.3"],
     });
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-  console.log("Scroll Progress:", latest); // 0 at 'start end', 1 at 'end start'
-});
+ 
   return (
     <>
     <h1 className="py-12 text-center text-3xl">ABout <span className="text-3xl font-bold">ME</span></h1>
@@ -22,7 +20,7 @@ const AboutUs = () => {
         <div className="md:w-[50%]">
           <img src={assests.AboutPic} alt="" />
         </div>
-        <motion.p ref={ref} className="md:w-[50%] flex flex-wrap gap-1 leading-0   ">
+        <motion.p ref={ref} className="md:w-[50%] flex flex-wrap gap-1 leading-tight  ">
           {
              words.map((ele,index)=>{
               const start = index / words.length;
@@ -32,7 +30,7 @@ const AboutUs = () => {
                const opacity = useSpring(opac, { stiffness: 100, damping: 30 });
                   return (
                     <span className="relative inline-block">
-                      <span className="absolute text-lg font-bold opacity-20">{ele}</span>
+                      <span className="absolute text-lg p-0 font-bold opacity-20">{ele}</span>
                      <motion.span className="text-lg font-bold" style={{opacity}} >{ele}</motion.span>
                     </span>
                     
