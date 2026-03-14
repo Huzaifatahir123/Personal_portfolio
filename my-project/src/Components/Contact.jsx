@@ -1,14 +1,25 @@
 import { FacebookIcon } from 'lucide-react'
 import React from 'react'
-
+import {useScroll,useSpring,useTransform,motion} from "framer-motion"
+import { useRef } from 'react'
 const Contact = () => {
+     const ref = useRef(null);
+        
+          const { scrollYProgress } = useScroll({
+            target: ref,
+            offset: ["start end", "end 0.9"],
+          });
+          const scaleXy = useTransform(scrollYProgress,[0,0.7],[0.3,1,]);
+          const scale = useSpring(scaleXy,{damping:70,
+                            stiffness:300,
+                            });
     const inputCss = `border p-2 rounded-sm outline-none`
   return (
     <>
     
-    <div className='px-6 py-12 sm:px-14 md:px-16 flex  max-sm:justify-center max-sm:items-center max-sm:flex-col-reverse max-md:justify-center max-md:items-center  gap-10 max-md:flex-wrap'>
+    <motion.div ref={ref} className='px-6 py-12 sm:px-14 md:px-16 flex  max-sm:justify-center max-sm:items-center max-sm:flex-col-reverse max-md:justify-center max-md:items-center  gap-10 max-md:flex-wrap'>
         
-        <div className='md:w-[40%]'>
+        <motion.div style={{scale}} className='md:w-[40%]'>
             <form action="" className='flex flex-col gap-4'>
                 <input placeholder='Name' type="text"  className={`${inputCss}`}/>
                 <input className={`${inputCss}`} placeholder='Email' type="text" />
@@ -27,14 +38,14 @@ Touch</span>
                 </div>
                 
             </form>
-        </div>
-        <div className='flex md:w-[60%] flex-col gap-2'>
-            <h1 className='text-3xl text-wrap max-md:text-center'>Lets talk for Something special</h1>
+        </motion.div>
+        <motion.div style={{scale}} className='flex md:w-[60%] flex-col gap-2'>
+            <h1 className='text-5xl text-wrap font-bold max-md:text-center'>Lets talk for Something special</h1>
             <p className='text-lg max-md:text-center '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quo cum dolor voluptate ex iure ducimus, quos ut quis aspernatur placeat suscipit possimus laboriosam maiores eius aperiam commodi rerum nisi.</p>
-            <p className='text-sm font-bold max-md:text-center'>h905923@gmail.com</p>
-            <p className='text-sm font-bold max-md:text-center'>+923256797391</p>
-        </div>
-    </div>
+            <p className='text-lg font-bold max-md:text-center'>h905923@gmail.com</p>
+            <p className='text-lg font-bold max-md:text-center'>+923256797391</p>
+        </motion.div>
+    </motion.div>
     </>
     
   )

@@ -8,6 +8,7 @@ import Projects from './Components/Projects.jsx'
 import Contact from './Components/Contact.jsx'
 import Footer from './Components/Footer.jsx'
 import Loader from './Components/Loader.jsx'
+import Testimonial from './Components/Testimonial.jsx'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,6 +46,7 @@ const App = () => {
           <Experience />
           <AboutUs />
           <Projects />
+          <Testimonial/>
           <Contact />
           <Footer />
         </>
