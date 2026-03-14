@@ -23,14 +23,14 @@ const AboutUs = () => {
         <motion.p ref={ref} className="md:w-[50%] flex flex-wrap gap-1 leading-tight  ">
           {
              words.map((ele,index)=>{
-              const start = index / words.length;
+              const start = index / words.length + 0.03;
               const end = start + (index / words.length);
               
               const opac = useTransform(scrollYProgress,[start,end > 1 ? 1:end],[0,1])
                const opacity = useSpring(opac, { stiffness: 100, damping: 30 });
                   return (
                     <span className="relative inline-block">
-                      <span className="absolute text-lg p-0 font-bold opacity-20">{ele}</span>
+                      <span className="absolute text-lg p-0 font-bold opacity-5">{ele}</span>
                      <motion.span className="text-lg font-bold" style={{opacity}} >{ele}</motion.span>
                     </span>
                     

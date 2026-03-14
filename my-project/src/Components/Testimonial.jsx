@@ -10,7 +10,7 @@ const Testimonial = () => {
         target: ref,
         offset: ["start end", "end 0.9"],
       });
-      const scaleXy = useTransform(scrollYProgress,[0,0.7,1],[0.3,1,0.8]);
+      const scaleXy = useTransform(scrollYProgress,[0,0.9,1],[0.3,1,0.9]);
       const scale = useSpring(scaleXy,{damping:70,
                         stiffness:300,
                         })
@@ -82,9 +82,9 @@ const Testimonial = () => {
             dragElastic={1}
             onDragEnd={(e, { offset, velocity }) => {
               const swipe = offset.x;
-              if (swipe < -100) {
+              if (swipe < -50) {
                 paginate(1); // Swipe left to go next
-              } else if (swipe > 100) {
+              } else if (swipe > 50) {
                 paginate(-1); // Swipe right to go prev
               }
             }}
