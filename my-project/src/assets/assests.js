@@ -12,10 +12,10 @@ import react from './react.svg'
 import tailwind from './tailwindcss.svg'
 import postgre from './postgresql.svg'
 import redux from './redux.svg'
-
+import Cv from "./Cv.pdf"
 
 export const  assests = {
-         Logo,redux,
+         Logo,redux,Cv,
          HeroImg,git,AboutPic,ProjectImg,javaScript,postgre,tailwind,express,mongodb,react,node,framer
 } 
 export default assests

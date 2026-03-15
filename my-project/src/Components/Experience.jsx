@@ -12,9 +12,9 @@ const Experience = () => {
 
   // 1. Create unique parallax speeds for each card
   // card 1 moves slow, card 3 moves faster (creates depth)
-  const transformY1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const transformY2 = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const transformY3 = useTransform(scrollYProgress, [0, 1], [120, -120]);
+  const transformY1 = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const transformY2 = useTransform(scrollYProgress, [0, 1], [180, -180]);
+  const transformY3 = useTransform(scrollYProgress, [0, 1], [220, -220]);
 
   // 2. Add Spring for "Premium" smoothness (Damping 30 is the secret)
   const y1 = useSpring(transformY1, { stiffness: 100, damping: 30 });
@@ -25,7 +25,7 @@ const Experience = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
   const experiences = [
-    { y: y1, title: "Google", duration: "Sep 24 - Present", description: "As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms." },
+    { y: y1, title: "Google", duration: "Sep 24 - Present", description: "As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms.As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms.As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms." },
     { y: y2, title: "Google", duration: "Jan 23 - Aug 24", description: "Collaborating with a dynamic team, I contributed to the enhancement of search accuracy and user experience optimization." },
     { y: y3, title: "Google", duration: "Jun 21 - Dec 22", description: "Optimized large-scale system performance and implemented high-efficiency data structures for millions of users." },
   ];
@@ -40,18 +40,18 @@ const Experience = () => {
         <div className="w-20 h-1 bg-white mx-auto mt-4 rounded-full" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-7xl">
+      <div className="flex flex-col gap-8 flex-wrap w-full max-w-7xl">
         {experiences.map((ele, i) => (
           <motion.div
             key={i}
             style={{ y: ele.y, opacity }}
-            className="group relative border border-white/10 rounded-xl flex flex-col gap-6 p-8 bg-white/5 backdrop-blur-md hover:border-blue-500/50 transition-colors duration-500 shadow-2xl"
+            className="group relative border border-white rounded-sm flex flex-col gap-6 p-8   "
           >
             {/* Subtle Glow Effect */}
-            <div className="absolute -inset-px bg-gradient-to-br from-blue-500/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute rounded-xl " />
             
             <div className="flex justify-between items-start z-10">
-              <div className="p-3 bg-blue-500/10 rounded-lg">
+              <div className="p-3  rounded-lg">
                 <GlobeOffIcon size={24} className="" />
               </div>
               <span className="text-xs uppercase tracking-widest opacity-50 font-mono">
@@ -61,7 +61,7 @@ const Experience = () => {
 
             <div className="z-10">
               <h2 className="text-2xl font-bold mb-2">{ele.title}</h2>
-              <p className="text-sm leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">
+              <p className="text-sm leading-relaxed  ">
                 {ele.description}
               </p>
             </div>
