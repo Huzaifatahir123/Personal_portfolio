@@ -10,13 +10,13 @@ const Testimonial = () => {
         target: ref,
         offset: ["start end", "end 0.9"],
       });
-      const scaleXy = useTransform(scrollYProgress,[0,0.9,1],[0.3,1,0.9]);
+      const scaleXy = useTransform(scrollYProgress,[0,0.5,0.9,1],[0,1,1,0.5]);
       const scale = useSpring(scaleXy,{damping:70,
                         stiffness:300,
                         })
   const testimonials = [
-    { bgcolor:"bg-black",color:"text-white", id: 1, img: assets.Logo, desc: "The MERN stack projects here are incredible. The attention to detail in the UI/UX and the smooth Framer Motion transitions make the experience truly premium." , Name:"Flora Sheen" , Designation:"UI Designer"},
-    { id: 2, img: assets.HeroImg, desc: "Working on this chat application was a game-changer. The backend architecture is solid, and the frontend animations are buttery smooth." , Name:"Huzaifa" , Designation:"Full-Stack Developer",color:"text-black",bgcolor:"bg-white"},
+    { bgcolor:"bg-black",color:"white", id: 1, img: assets.Logo, desc: "The MERN stack projects here are incredible. The attention to detail in the UI/UX and the smooth Framer Motion transitions make the experience truly premium." , Name:"Flora Sheen" , Designation:"UI Designer"},
+    { id: 2, img: assets.HeroImg, desc: "Working on this chat application was a game-changer. The backend architecture is solid, and the frontend animations are buttery smooth." , Name:"Huzaifa" , Designation:"Full-Stack Developer",color:"black",bgcolor:"white"},
   ];
 
   const [[counter, direction], setCounter] = useState([0, 0]);
@@ -82,14 +82,14 @@ const Testimonial = () => {
             dragElastic={1}
             onDragEnd={(e, { offset, velocity }) => {
               const swipe = offset.x;
-              if (swipe < -50) {
+              if (swipe < -10) {
                 paginate(1); // Swipe left to go next
-              } else if (swipe > 50) {
+              } else if (swipe > 10) {
                 paginate(-1); // Swipe right to go prev
               }
             }}
             
-            className={`absolute flex flex-col gap-6 w-full rounded-3xl ${currentTestimonial.bgcolor} ${currentTestimonial.color}  justify-center items-center p-10  shadow-2xl cursor-grab active:cursor-grabbing`}
+            className={`absolute flex flex-col gap-6 w-full rounded-3xl ${currentTestimonial.bgcolor} text-${currentTestimonial.color}  justify-center items-center p-10  shadow-2xl cursor-grab active:cursor-grabbing`}
           >
             {/* Animated Image */}
             <motion.img 
@@ -105,11 +105,12 @@ const Testimonial = () => {
             >
               "{currentTestimonial.desc}"
             </motion.p>
+            <motion.div variants={childVariants} className={`w-48 h-1 bg-${currentTestimonial.color}`}></motion.div>
             
             {/* Animated Name & Designation */}
             <motion.div variants={childVariants} className='text-center pointer-events-none'>
               <h3 className='text-2xl font-bold'>{currentTestimonial.Name}</h3>
-              <p className=' font-medium'>{currentTestimonial.Designation}</p>
+              <p className=' font-medium mt-2'>{currentTestimonial.Designation}</p>
             </motion.div>
           </motion.div>
         </AnimatePresence>

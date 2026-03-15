@@ -19,7 +19,7 @@ const Hero = () => {
           </div>
          
           <div className="flex  gap-2">
-            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">Frontend</h1>
+            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">FullStack</h1>
 <h1 className="text-4xl max-sm:text-2xl font-extrabold ">
   Developer
 </h1>
@@ -27,13 +27,15 @@ const Hero = () => {
 
           <div className="flex gap-2">
             <h1 className="text-4xl max-sm:text-2xl text-text-secondary">Based In</h1>
-            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">India</h1>
+            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">Pakistan</h1>
           </div>
         
         
 
         <div className="sm:mt-10 max-sm:mt-5 text-left text-lg">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet molestiae pariatur esse aspernatur id voluptas assumenda, porro est maiores labore a praesentium impedit provident veniam, quibusdam quia, modi animi et.</p>
+            <p> Developer with experience building web applications, working across both frontend and backend.
+Focused on problem-solving, writing clean and maintainable code, and developing scalable solutions.
+</p>
         </div>
         
    

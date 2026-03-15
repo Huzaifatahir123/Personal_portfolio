@@ -52,7 +52,7 @@ const Experience = () => {
             
             <div className="flex justify-between items-start z-10">
               <div className="p-3 bg-blue-500/10 rounded-lg">
-                <GlobeOffIcon size={24} className="text-blue-400" />
+                <GlobeOffIcon size={24} className="" />
               </div>
               <span className="text-xs uppercase tracking-widest opacity-50 font-mono">
                 {ele.duration}
