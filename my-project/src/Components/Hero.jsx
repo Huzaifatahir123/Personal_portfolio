@@ -10,17 +10,17 @@ const Hero = () => {
   ];
   return (
     <>
-      <div className="px-10 py-6 sm:px-14 md:px-16 lg:px-28 max-lg:justify-center items-center flex max-lg:flex-col-reverse  ">
+      <div className="px-10 py-6 sm:px-14 md:px-16 lg:px-28 max-lg:justify-center items-center flex   ">
         <div className=" flex  flex-col justify-center py-20 md:w-[40vw]">
          
           <div className="flex flex-wrap gap-2">
             <h1 className="text-4xl max-sm:text-2xl text-text-secondary ">Hello I'am </h1>
-            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">Huzaifa Tahir</h1>
+            <h1 className="text-4xl max-sm:text-4xl text-text-secondary font-extrabold">Huzaifa Tahir</h1>
           </div>
          
           <div className="flex  gap-2">
-            <h1 className="text-4xl max-sm:text-2xl text-text-secondary font-extrabold">FullStack</h1>
-<h1 className="text-4xl max-sm:text-2xl font-extrabold ">
+            <h1 className="text-4xl max-sm:text-3xl text-text-secondary font-extrabold">FullStack</h1>
+<h1 className="text-4xl max-sm:text-3xl font-extrabold ">
   Developer
 </h1>
           </div>
@@ -61,7 +61,7 @@ class="relative w-full text-base font-semibold text-left text-black transition-c
 
         </div>
         
-        <div className=" relative  md:w-[60vw] flex">
+        <div className=" relative max-md:hidden  md:w-[60vw] flex">
                 <img src={assests.HeroImg} className="self-start relative right-24 max-sm:right-8 " alt="" />
         </div>
       </div>

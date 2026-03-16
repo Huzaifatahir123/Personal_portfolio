@@ -8,9 +8,9 @@ const Testimonial = () => {
     
       const { scrollYProgress } = useScroll({
         target: ref,
-        offset: ["start end", "end 0.9"],
+        offset: ["start end", "end start"],
       });
-      const scaleXy = useTransform(scrollYProgress,[0,0.5,0.9,1],[0,1,1,0.5]);
+      const scaleXy = useTransform(scrollYProgress,[0,0.3,0.7,1],[0,1,1,0.5]);
       const scale = useSpring(scaleXy,{damping:70,
                         stiffness:300,
                         })

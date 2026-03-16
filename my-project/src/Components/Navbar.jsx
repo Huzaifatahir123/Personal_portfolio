@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import assests from '../assets/assests.js';
-import { useAnimate, stagger } from "framer-motion";
+import { useAnimate, stagger, delay } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,18 +11,32 @@ const Navbar = () => {
   useEffect(() => {
     if (isOpen) {
       // OPEN: Lines turn white and rotate
-      animate(".line-1", { rotate: 45, y: 4, backgroundColor: "#fff" });
-      animate(".line-2", { rotate: -45, y: -4, backgroundColor: "#fff" });
+      animate(".line-1", { rotate: 45, y: 4, backgroundColor: "#fff" },{ type: "spring", stiffness: 300, damping: 15 },{duration:0.3 ,ease:[0.37, 0, 0.63, 1]});
+      animate(".line-2", { rotate: -45, y: -4, backgroundColor: "#fff" },{ type: "spring", stiffness: 300, damping: 10 },{duration:0.3 ,ease:[0.37, 0, 0.63, 1]});
       
-      animate(".menu-overlay", { clipPath: "circle(150% at 100% 0%)" }, { duration: 0.7 ,ease:[0.37, 0, 0.63, 1] });
-      animate(".nav-link", { opacity: 1, y: 0 }, { delay: stagger(0.2) });
+      animate(".menu-overlay", { clipPath: "circle(150% at 100% 0%)" },{ duration: 0.7 ,ease:[0.37, 0, 0.63, 1] });
+      animate(".nav-link", { opacity: 1, x:0 ,scale:1}, { duration:0.4, ease:"easeInOut", delay: stagger(0.15,{ startDelay: 0.2 }) })
     } else {
       // CLOSE: Lines turn back to black and reset
-      animate(".nav-link", { opacity: 0, y: 60 });
-      animate(".menu-overlay", { clipPath: "circle(0% at 100% 0%)" });
+      animate(".nav-link", { opacity: 0, x:120 ,scale:0 }, { duration:0.4, ease:"easeInOut", delay: stagger(0.15,{from:"last"}) });
+      animate(".menu-overlay", { clipPath: "circle(0% at 100% 0%)" },{ duration: 0.5 ,ease:"easeOut", delay:0.3 });
       
-      animate(".line-1", { rotate: 0, y: 0, backgroundColor: "#000" });
-      animate(".line-2", { rotate: 0, y: 0, backgroundColor: "#000" });
+      animate(".line-1", { rotate: 0, y: 0, backgroundColor: "#000" },{ 
+    type: "spring", 
+    stiffness: 300, 
+    damping: 10,
+    duration: 0.3,  
+    delay: 0.6,      
+    ease: [0.37, 0, 0.63, 1] 
+  });
+      animate(".line-2", { rotate: 0, y: 0, backgroundColor: "#000" },{ 
+    type: "spring", 
+    stiffness: 300, 
+    damping: 10,
+    duration: 0.3, 
+    delay: 0.6,     
+    ease: [0.37, 0, 0.63, 1] 
+  });
     }
   }, [isOpen, animate]);
 
@@ -32,7 +46,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className='flex gap-2 items-center'>
           <img className='max-sm:size-4 object-contain' src={assests.Logo} alt="Logo" />
-          <h1 className='sm:text-2xl font-bold text-black'>Personal</h1>
+          <h1 className='sm:text-2xl max-sm:text-2xl font-bold text-black'>Huzaifa</h1>
         </div>
 
         {/* --- HAMBURGER BUTTON --- */}
@@ -41,29 +55,29 @@ const Navbar = () => {
           onClick={() => setIsOpen(!isOpen)} 
           className='flex flex-col justify-center items-center cursor-pointer gap-1.5 w-10 h-10 z-50 relative'
         >
-          <div className="line-1 w-8 h-0.5 bg-black" />
-          <div className="line-2 w-8 h-0.5 bg-black" />
+          <div className="line-1 w-8 h-1 bg-black" />
+          <div className="line-2 w-8 h-1 bg-black" />
         </div>
       </div>
 
       {/* --- MENU OVERLAY --- */}
       {/* Lower Z-INDEX (40) than the button */}
       <div 
-        className="menu-overlay fixed inset-0 px-40 bg-black z-40 flex flex-col justify-center items-left gap-3"
+        className="menu-overlay fixed inset-0 max-sm:px-10 sm:px-40 bg-black z-40 flex flex-col justify-center max-sm:items-center items-left gap-6"
         style={{ clipPath: "circle(0% at 100% 0%)" }}
       >
         {links.map((ele, i) => (
-          <div className='flex flex-col gap-6 justify-center items-center'>
+          
           <a 
   key={i} 
-  className="nav-link relative text-[60px] text-white opacity-0 translate-y-8 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-white" 
+  className="nav-link relative  max-sm:text-[40px] text-[60px] text-white opacity-0 translate-y-8 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-white" 
   href="#"
 >
   {ele}
 </a>
-          <div className='h-px bg-white'></div>
+          
 
-          </div>
+          
         ))}
       </div>
     </section>
