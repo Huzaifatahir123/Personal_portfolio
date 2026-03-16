@@ -1,38 +1,73 @@
-import React from 'react'
-import assests from '../assets/assests.js'
-import {DownloadIcon} from "lucide-react"
+import React, { useState, useEffect } from 'react';
+import assests from '../assets/assests.js';
+import { useAnimate, stagger } from "framer-motion";
+
 const Navbar = () => {
- const links  = [
-     "About Me", "Skills" , "Projects" ,"Contact Us", 
-  ]; 
+  const [isOpen, setIsOpen] = useState(false);
+  const [scope, animate] = useAnimate();
+  
+  const links = ["About Me", "Skills", "Projects", "Contact Us"];
+
+  useEffect(() => {
+    if (isOpen) {
+      // OPEN: Lines turn white and rotate
+      animate(".line-1", { rotate: 45, y: 4, backgroundColor: "#fff" });
+      animate(".line-2", { rotate: -45, y: -4, backgroundColor: "#fff" });
+      
+      animate(".menu-overlay", { clipPath: "circle(150% at 100% 0%)" }, { duration: 0.7 ,ease:[0.37, 0, 0.63, 1] });
+      animate(".nav-link", { opacity: 1, y: 0 }, { delay: stagger(0.2) });
+    } else {
+      // CLOSE: Lines turn back to black and reset
+      animate(".nav-link", { opacity: 0, y: 60 });
+      animate(".menu-overlay", { clipPath: "circle(0% at 100% 0%)" });
+      
+      animate(".line-1", { rotate: 0, y: 0, backgroundColor: "#000" });
+      animate(".line-2", { rotate: 0, y: 0, backgroundColor: "#000" });
+    }
+  }, [isOpen, animate]);
+
   return (
-   <>
-     <div className='px-10 py-6 sm:px-14 md:px-16 lg:px-28 flex justify-between
-     max-sm:justify-between '>
-      <div className='flex gap-2 justify-center items-center'>
-         <img className='max-sm:size-4 object-contain' src={assests.Logo} alt="" />
-         <h1 className=' sm:text-2xl font-bold text-black'>Personal</h1>
+    <section ref={scope} className="relative">
+      <div className='px-6 py-6 sm:px-14 md:px-16 lg:px-28 flex justify-between items-center'>
+        {/* Logo */}
+        <div className='flex gap-2 items-center'>
+          <img className='max-sm:size-4 object-contain' src={assests.Logo} alt="Logo" />
+          <h1 className='sm:text-2xl font-bold text-black'>Personal</h1>
+        </div>
+
+        {/* --- HAMBURGER BUTTON --- */}
+        {/* Increased Z-INDEX to 50 to stay ABOVE the menu */}
+        <div 
+          onClick={() => setIsOpen(!isOpen)} 
+          className='flex flex-col justify-center items-center cursor-pointer gap-1.5 w-10 h-10 z-50 relative'
+        >
+          <div className="line-1 w-8 h-0.5 bg-black" />
+          <div className="line-2 w-8 h-0.5 bg-black" />
+        </div>
       </div>
-      <div className='flex justify-center items-center p-2 md:gap-3  lg:gap-8'>
-        {
-          links.map((ele ,index)=>(
-               <a key={index} className='text-primary text-xl max-md:hidden ' href={`#${ele}`}>{ele}</a>
-          ))
-        }
-      </div>
-      <div className=' flex justify-center items-center '>
-        <a href={assests.Cv} download="Huzaifa_Tahir_Cv.pdf"
-className="relative inline-flex items-center justify-start  maxsm:px-1 px-2  py-3 overflow-hidden font-medium transition-all bg-indigo-100 rounded hover:bg-white group">
-<span
-className="w-48 h-48 rounded rotate-[-40deg] bg-black absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-<span
-className="relative w-full text-base font-semibold text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white flex gap-2 max-sm:text-sm">Resume<DownloadIcon /></span>
+
+      {/* --- MENU OVERLAY --- */}
+      {/* Lower Z-INDEX (40) than the button */}
+      <div 
+        className="menu-overlay fixed inset-0 px-40 bg-black z-40 flex flex-col justify-center items-left gap-3"
+        style={{ clipPath: "circle(0% at 100% 0%)" }}
+      >
+        {links.map((ele, i) => (
+          <div className='flex flex-col gap-6 justify-center items-center'>
+          <a 
+  key={i} 
+  className="nav-link relative text-[60px] text-white opacity-0 translate-y-8 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-white" 
+  href="#"
+>
+  {ele}
 </a>
+          <div className='h-px bg-white'></div>
+
+          </div>
+        ))}
       </div>
+    </section>
+  );
+};
 
-      </div> 
-   </>
-  )
-}
-
-export default Navbar
+export default Navbar;
