@@ -1,107 +1,111 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import assets from '../assets/assests';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence ,useScroll,useSpring,useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
+
 const Testimonial = () => {
-    const ref = useRef(null);
-    
-      const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "end start"],
-      });
-      const scaleXy = useTransform(scrollYProgress,[0,0.3,0.7,1],[0,1,1,0.5]);
-      const scale = useSpring(scaleXy,{damping:70,
-                        stiffness:300,
-                        })
-const testimonials = [
- 
-  { 
-    id: 1, 
-    img: assets.Women, 
-    bgcolor: "bg-zinc-900", 
-    color: "white", 
-    Name: "Rabia Ahmed", 
-    Designation: "Designer",
-    desc: "The implementation of Framer Motion here is some of the best I've seen. It’s not just about the 'wow' factor; the animations actually improve the usability and flow of the entire application." 
-  },
-  { 
-    id: 2, 
-    img: assets.Men, 
-    bgcolor: "white", 
-    color: "black", 
-    Name: "Amjad Bashir", 
-    Designation: "Accountant",
-    desc: "We needed a developer who understood both the aesthetic and the performance side of a MERN application. The result was a lightning-fast, sleek interface that our users absolutely love." 
-  },
-  { 
-    id: 3, 
-    img: assets.Women, 
-    bgcolor: "bg-black", 
-    color: "white", 
-    Name: "Areeba Batool", 
-    Designation: "Product Manager",
-    desc: "Rarely do you find a portfolio that balances complex backend logic with such a refined frontend. The Chat App’s real-time capabilities are robust, reliable, and incredibly polished." 
-  },
-  { 
-    id: 4, 
-    img: assets.Men, 
-    bgcolor: "white", 
-    color: "black", 
-    Name: "Ahmed Bilal", 
-    Designation: "Frontend Lead",
-    desc: "I was impressed by the clean code structure and the deep understanding of Data Structures. It's clear that performance optimization was a priority from day one of development." 
-  },
-];
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Sophisticated scale entry
+  const scaleXy = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
+  const scale = useSpring(scaleXy, { damping: 30, stiffness: 100 });
+
+  const testimonials = [
+    {
+      id: 1,
+      img: assets.Women,
+      Name: "Rabia Ahmed",
+      Designation: "UI/UX Designer",
+      desc: "The implementation of Framer Motion here is some of the best I've seen. It’s not just about the 'wow' factor; the animations actually improve the usability and flow of the entire application."
+    },
+    {
+      id: 2,
+      img: assets.Men,
+      Name: "Ahmed Bilal",
+      Designation: "MERN Stack Lead",
+      desc: "We needed a developer who understood both the aesthetic and the performance side of a MERN application. The result was a lightning-fast, sleek interface that our users absolutely love."
+    },
+    {
+      id: 3,
+      img: assets.Women,
+      Name: "Areeba Batool",
+      Designation: "Product Manager",
+      desc: "Rarely do you find a portfolio that balances complex backend logic with such a refined frontend. The Chat App’s real-time capabilities are robust, reliable, and polished."
+    }
+  ];
 
   const [[counter, direction], setCounter] = useState([0, 0]);
-  const currentTestimonial = testimonials[counter];
+  const current = testimonials[counter];
 
   const paginate = (newDirection) => {
     let nextIndex = (counter + newDirection + testimonials.length) % testimonials.length;
     setCounter([nextIndex, newDirection]);
   };
 
-  /** --- ANIMATION VARIANTS --- **/
+  /** --- ENHANCED ANIMATION VARIANTS --- **/
   const cardVariants = {
     enter: (direction) => ({
-      x: direction > 0 ? 500 : -500,
+      x: direction > 0 ? 300 : -300,
       opacity: 0,
-      scale: 0.9,
-      rotateY: direction > 0 ? 45 : -45, // Adds a sleek 3D entrance
+      rotate: direction > 0 ? 5 : -5,
+      filter: "blur(10px)",
     }),
     center: {
-      zIndex: 1,
       x: 0,
       opacity: 1,
-      scale: 1,
-      rotateY: 0,
-      transition: { 
-        duration: 0.6, 
-        ease: [0.22, 1, 0.36, 1],
-        staggerChildren: 0.1, // This animates the internal img/text one by one
+      rotate: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+        staggerChildren: 0.15,
       }
     },
     exit: (direction) => ({
-      zIndex: 0,
-      x: direction < 0 ? 500 : -500,
+      x: direction < 0 ? 300 : -300,
       opacity: 0,
-      scale: 0.9,
-      rotateY: direction < 0 ? 45 : -45,
-      transition: { duration: 0.4, ease: "easeInOut" }
+      rotate: direction < 0 ? -5 : 5,
+      filter: "blur(10px)",
+      transition: { duration: 0.4 }
     })
   };
 
   const childVariants = {
-    enter: { opacity: 0, y: 20 },
-    center: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+    enter: { opacity: 0, y: 30 },
+    center: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <motion.section id='Testimonial' ref={ref} className='px-6 py-24 flex flex-col gap-12 justify-center items-center   perspective-1000'>
-      <h1 className='text-5xl text-black font-bold tracking-tight'>Testimonials</h1>
+    <motion.section 
+      id='Testimonial' 
+      ref={ref} 
+      className='bg-white text-black px-6 py-32 flex flex-col items-center overflow-hidden'
+    >
+      {/* Sleek Header Section */}
+      <div className="text-center mb-20 overflow-hidden">
+        <motion.span 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          className="text-zinc-500 uppercase tracking-[0.4em] text-xs font-bold block mb-4"
+        >
+          Voices
+        </motion.span>
+        <motion.h1 
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className='text-6xl md:text-8xl font-black uppercase tracking-tighter'
+        >
+          Client <span className="text-zinc-500 italic font-light">Talk</span>
+        </motion.h1>
+      </div>
 
-      <motion.div style={{scale}} className='relative w-full max-w-md h-[480px] flex items-center justify-center'>
+      <motion.div style={{ scale }} className='relative w-full max-w-4xl h-[550px] flex items-center justify-center'>
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={counter}
@@ -110,55 +114,67 @@ const testimonials = [
             initial="enter"
             animate="center"
             exit="exit"
-            
-            /* --- SWIPE / DRAG LOGIC --- */
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
-            onDragEnd={(e, { offset, velocity }) => {
-              const swipe = offset.x;
-              if (swipe < -10) {
-                paginate(1); // Swipe left to go next
-              } else if (swipe > 10) {
-                paginate(-1); // Swipe right to go prev
-              }
+            dragElastic={0.2}
+            onDragEnd={(e, { offset }) => {
+              if (offset.x < -50) paginate(1);
+              else if (offset.x > 50) paginate(-1);
             }}
-            
-            className={`absolute flex flex-col gap-6 w-full rounded-3xl ${currentTestimonial.bgcolor} text-${currentTestimonial.color}  justify-center items-center p-10  shadow-2xl cursor-grab active:cursor-grabbing`}
+            className={`absolute w-full max-w-2xl bg-zinc-950 border border-zinc-800 rounded-[2rem] p-10 md:p-16 flex flex-col items-center gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-grab active:cursor-grabbing`}
           >
-            {/* Animated Image */}
-            <motion.img 
-              variants={childVariants}
-              className='w-28 h-28 rounded-full object-cover border border-gray-500 pointer-events-none' 
-              src={currentTestimonial.img} 
-            />
+            <Quote size={40} className="text-zinc-800 absolute top-10 left-10 opacity-50" />
+
+            {/* Profile Image with subtle glow */}
+            <div className="relative">
+              <motion.img 
+                variants={childVariants}
+                className='w-32 h-32 rounded-full object-cover border-2 border-zinc-800 grayscale hover:grayscale-0 transition-all duration-500' 
+                src={current.img} 
+              />
+              <div className="absolute inset-0 rounded-full bg-white/5 blur-xl -z-10" />
+            </div>
             
-            {/* Animated Text */}
             <motion.p 
               variants={childVariants}
-              className={`text-center  italic leading-relaxed pointer-events-none ${currentTestimonial.color}`}
+              className="text-center text-xl md:text-2xl font-medium leading-relaxed italic text-zinc-300"
             >
-              "{currentTestimonial.desc}"
+              "{current.desc}"
             </motion.p>
-            <motion.div variants={childVariants} className={`w-48 h-1 bg-${currentTestimonial.color}`}></motion.div>
             
-            {/* Animated Name & Designation */}
-            <motion.div variants={childVariants} className='text-center pointer-events-none'>
-              <h3 className='text-2xl font-bold'>{currentTestimonial.Name}</h3>
-              <p className=' font-medium mt-2'>{currentTestimonial.Designation}</p>
+            <motion.div variants={childVariants} className="flex flex-col items-center">
+              <h3 className='text-3xl font-black uppercase tracking-tight text-white'>{current.Name}</h3>
+              <p className='text-zinc-500 font-mono text-sm tracking-widest mt-1 uppercase'>{current.Designation}</p>
             </motion.div>
           </motion.div>
         </AnimatePresence>
       </motion.div>
 
-      {/* Navigation Buttons */}
-      <div className='flex gap-4'>
-        <button onClick={() => paginate(-1)} className="p-4 rounded-full bg-black border border-white/10 text-white  transition-all active:scale-90">
-          <ArrowLeft size={24} />
-        </button>
-        <button onClick={() => paginate(1)} className="p-4 rounded-full bg-black border border-white/10 text-white  transition-all active:scale-90">
-          <ArrowRight size={24} />
-        </button>
+      {/* Modern Navigation */}
+      <div className='flex items-center gap-12 mt-10'>
+        <motion.button 
+          whileHover={{ x: -5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => paginate(-1)} 
+          className="group flex items-center gap-2 text-zinc-500 hover:text-white transition-colors"
+        >
+          <ArrowLeft size={20} /> <span className="text-xs font-bold tracking-widest uppercase">Prev</span>
+        </motion.button>
+
+        <div className="flex gap-2">
+           {testimonials.map((_, i) => (
+             <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${i === counter ? "bg-white w-6" : "bg-zinc-800"}`} />
+           ))}
+        </div>
+
+        <motion.button 
+          whileHover={{ x: 5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => paginate(1)} 
+          className="group flex items-center gap-2 text-zinc-500 hover:text-white transition-colors"
+        >
+           <span className="text-xs font-bold tracking-widest uppercase">Next</span> <ArrowRight size={20} />
+        </motion.button>
       </div>
     </motion.section>
   );

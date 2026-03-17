@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { Mail, Phone, Send } from 'lucide-react';
+import { Mail, Phone, Send, Loader2, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -14,7 +16,33 @@ const Contact = () => {
   const y = useTransform(scrollYProgress, [0, 0.2], [100, 0]);
   const springY = useSpring(y, { damping: 20, stiffness: 100 });
 
-  // Sleek Input Tailwind Class
+  // Web3Forms Logic
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setResult(null);
+
+    const formData = new FormData(event.target);
+    // Replace with your Access Key from web3forms.com
+    formData.append("access_key", "68d98f9b-7b0d-4548-8981-337cecc09939"); 
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("success");
+      event.target.reset();
+    } else {
+      console.log("Error", data);
+      setResult("error");
+    }
+    setIsSubmitting(false);
+  };
+
   const inputStyles = `
     w-full bg-transparent border-b border-zinc-300 py-4 outline-none 
     focus:border-black transition-colors duration-500 placeholder:text-zinc-400
@@ -22,7 +50,7 @@ const Contact = () => {
   `;
 
   return (
-    <motion.section  id='Contact'
+    <motion.section id='Contact'
       ref={ref} 
       style={{ opacity, y: springY }}
       className="min-h-screen flex items-center px-6 py-20 sm:px-14 md:px-28 bg-white text-black"
@@ -31,23 +59,61 @@ const Contact = () => {
         
         {/* Left Side: Minimalist Form */}
         <div className="order-2 lg:order-1">
-          <form className="space-y-8">
+          <form onSubmit={onSubmit} className="space-y-8">
             <div className="group relative">
-              <input placeholder="What's your name?" type="text" className={inputStyles} />
+              <input 
+                name="name" 
+                required 
+                placeholder="What's your name?" 
+                type="text" 
+                className={inputStyles} 
+              />
             </div>
             <div className="group relative">
-              <input placeholder="Your email address" type="email" className={inputStyles} />
+              <input 
+                name="email" 
+                required 
+                placeholder="Your email address" 
+                type="email" 
+                className={inputStyles} 
+              />
             </div>
             <div className="group relative">
-              <textarea rows="4" placeholder="Tell me about your project..." className={inputStyles}></textarea>
+              <textarea 
+                name="message" 
+                required 
+                rows="4" 
+                placeholder="Tell me about your project..." 
+                className={inputStyles}
+              ></textarea>
             </div>
 
-            <button className="group relative flex items-center gap-3 overflow-hidden border border-black px-8 py-4 text-black transition-all hover:text-white">
+            <button 
+              disabled={isSubmitting}
+              className="group relative flex items-center gap-3 overflow-hidden border border-black px-8 py-4 text-black transition-all hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <span className="absolute inset-0 translate-y-full bg-black transition-transform duration-300 ease-in-out group-hover:translate-y-0"></span>
               <span className="relative font-bold uppercase tracking-widest text-sm flex items-center gap-2">
-                Send Message <Send size={16} />
+                {isSubmitting ? (
+                  <>Sending... <Loader2 size={16} className="animate-spin" /></>
+                ) : result === "success" ? (
+                  <>Sent! <CheckCircle size={16} /></>
+                ) : (
+                  <>Send Message <Send size={16} /></>
+                )}
               </span>
             </button>
+
+            {/* Success Message UI */}
+            {result === "success" && (
+              <motion.p 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                className="text-green-600 font-medium"
+              >
+                Thanks! I'll get back to you shortly.
+              </motion.p>
+            )}
           </form>
         </div>
 

@@ -36,17 +36,15 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* The 'mix-blend-difference' class is the magic here. 
-          It subtracts the pixel color of the cursor from the background. 
-          White (cursor) - White (bg) = Black.
-      */}
+      {
+      }
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed max-sm:hidden top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{ x: cursorX, y: cursorY, translateX: '-50%', translateY: '-50%' }}
       />
       
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        className="fixed max-sm:hidden top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
         animate={{
           scale: isHovering ? 2 : 1,
           backgroundColor: isHovering ? "white" : "transparent",

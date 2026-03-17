@@ -67,13 +67,13 @@ const Navbar = () => {
       </div>
 
       <div 
-        className="menu-overlay fixed overflow-hidden inset-0 max-sm:px-10 sm:px-26 bg-black z-40 flex flex-col justify-center max-sm:items-center items-left gap-6"
+        className="menu-overlay fixed overflow-hidden inset-0 max-sm:px-10 sm:px-26 bg-black z-40 flex flex-col justify-center max-sm:items-center items-left gap-2"
         style={{ clipPath: "circle(0% at 100% 0%)" }}
       >
         {links.map((ele, i) => (
           <a  onClick={() => setIsOpen(!isOpen)} 
             key={i} 
-            className="nav-link relative max-sm:text-[40px] text-[40px] text-white opacity-0 translate-y-8 before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-px before:w-full before:bg-white" 
+            className="nav-link italic font-bold uppercase tracking-tighter relative max-sm:text-[40px] text-[50px] text-white opacity-0 translate-y-8 " 
             href={ele.link}
           >
             {ele.Name}
