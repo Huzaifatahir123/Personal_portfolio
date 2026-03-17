@@ -18,11 +18,11 @@ const CustomCursor = () => {
     };
 
     const handleMouseOver = (e) => {
-      if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+    if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.cursor-pointer')) {
+    setIsHovering(true);
+  } else {
+    setIsHovering(false);
+  }
     };
 
     window.addEventListener('mousemove', moveCursor);
@@ -41,7 +41,7 @@ const CustomCursor = () => {
           White (cursor) - White (bg) = Black.
       */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{ x: cursorX, y: cursorY, translateX: '-50%', translateY: '-50%' }}
       />
       

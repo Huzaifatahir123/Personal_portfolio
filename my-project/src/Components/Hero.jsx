@@ -9,7 +9,7 @@ const Hero = () => {
   ];
   return (
     <>
-      <div className="px-10 isolation-auto py-6 sm:px-14 md:px-16 lg:px-28 max-lg:justify-center items-center flex   ">
+      <div className="px-10 isolate py-6 sm:px-14 md:px-16 lg:px-28 max-lg:justify-center items-center flex   ">
         <div className=" flex  flex-col justify-center py-20 md:w-[40vw]">
          
           <div className="flex flex-wrap gap-2">

@@ -39,11 +39,11 @@ const Footer = () => {
             <a href="https://github.com/Huzaifatahir123/" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform text-zinc-400 hover:text-white">
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com/in/huzaifa-tahir-0385292b9" target="_blank" rel="noreferrer" className="hover:scale-110 transition-transform text-zinc-400 hover:text-white">
+            <a href="https://linkedin.com/in/huzaifa-tahir-0385292b9" target="_blank" rel="noreferrer" className="hover:scale-110 cursor-pointer  transition-transform text-zinc-400 hover:text-white">
               <Linkedin size={20} />
             </a>
           </div>
-          <div className="h-4 w-[1px] bg-zinc-700 hidden sm:block" />
+          <div className="h-4 w-px bg-zinc-700 hidden sm:block" />
           <p className="text-[10px] uppercase tracking-tighter text-zinc-500">
             © 2024-2026
           </p>

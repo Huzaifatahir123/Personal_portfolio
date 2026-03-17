@@ -60,8 +60,8 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)} 
             className='flex flex-col justify-center items-center cursor-pointer gap-1.5 w-10 h-10'
           >
-            <div className="line-1 w-8 h-1 bg-black" />
-            <div className="line-2 w-8 h-1 bg-black" />
+            <a className="line-1 w-8 h-1 cursor-pointer bg-black" />
+            <a className="line-2 w-8 h-1 cursor-pointer bg-black" />
           </div>
         </div>
       </div>
