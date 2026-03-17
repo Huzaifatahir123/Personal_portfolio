@@ -9,6 +9,7 @@ import Contact from './Components/Contact.jsx'
 import Footer from './Components/Footer.jsx'
 import Loader from './Components/Loader.jsx'
 import Testimonial from './Components/Testimonial.jsx'
+import CustomCursor from './Components/Cursor.jsx'
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +40,8 @@ const App = () => {
         </div>
       ) : (
         /* 2. Main Website appears once loading is false */
-        <>
+        <div className='cursor-none'>
+          <CustomCursor/>
           <Navbar />
           <Hero />
           <Skills />
@@ -49,7 +51,7 @@ const App = () => {
           <Testimonial/>
           <Contact />
           <Footer />
-        </>
+        </div>
       )}
     </div>
   )

@@ -1,4 +1,4 @@
-import { GlobeOffIcon } from "lucide-react";
+import { GlobeOffIcon, MessageSquare ,Box , GraduationCap } from "lucide-react";
 import { useScroll, useTransform, motion, useSpring } from "framer-motion";
 import { useRef } from "react";
 
@@ -24,14 +24,34 @@ const Experience = () => {
   // 3. Create a sequential opacity fade-in
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
-  const experiences = [
-    { y: y1, title: "Google", duration: "Sep 24 - Present", description: "As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms.As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms.As a Senior Software Engineer at Google, I played a pivotal role in developing innovative solutions for core search algorithms." },
-    { y: y2, title: "Google", duration: "Jan 23 - Aug 24", description: "Collaborating with a dynamic team, I contributed to the enhancement of search accuracy and user experience optimization." },
-    { y: y3, title: "Google", duration: "Jun 21 - Dec 22", description: "Optimized large-scale system performance and implemented high-efficiency data structures for millions of users." },
-  ];
+
+
+const experiences = [
+  { 
+    y: y1, 
+    icon: MessageSquare, 
+    title: "Real-Time Chat Ecosystem", 
+    duration: "Nov 25 | jan 26 ", 
+    description: "Architected a full-stack communication platform utilizing Socket.io for bi-directional, low-latency messaging. Engineered a secure authentication layer using JWT and Bcrypt, and optimized MongoDB schemas to handle concurrent message streams and user presence states efficiently." 
+  },
+  { 
+    y: y2, 
+    icon: Box, 
+    title: "Supply Chain Logistics Engine", 
+    duration: "Sep 25 | Dec 25", 
+    description: "Developed a high-performance logistics simulator in C++ without external libraries. Implemented Dijkstra’s Algorithm for route optimization, a Max-Heap for order prioritization, and Doubly Linked Lists for inventory management, focusing on O(log n) time complexity for core operations." 
+  },
+  { 
+    y: y3, 
+    icon:GraduationCap, 
+    title: "Educational Assessment Platform", 
+    duration: "July 25 | Sep 25", 
+    description: "Built a comprehensive Quiz API featuring Role-Based Access Control (RBAC) for Admins and Students. Developed a robust Result Analytics model to track performance metrics and integrated Framer Motion to create a fluid, engaging frontend experience with Tailwind CSS." 
+  },
+];
 
   return (
-    <motion.div 
+    <motion.section id="Experience" 
       ref={ref} 
       className="bg-primary text-text px-6 py-24 sm:px-14 md:px-16 lg:px-28 flex flex-col justify-center items-center gap-16 overflow-hidden"
     >
@@ -50,9 +70,9 @@ const Experience = () => {
             {/* Subtle Glow Effect */}
             <div className="absolute rounded-xl " />
             
-            <div className="flex justify-between items-start z-10">
+            <div className="flex justify-between items-center z-10">
               <div className="p-3  rounded-lg">
-                <GlobeOffIcon size={24} className="" />
+                <ele.icon size={24} className="" />
               </div>
               <span className="text-xs uppercase tracking-widest opacity-50 font-mono">
                 {ele.duration}
@@ -68,7 +88,7 @@ const Experience = () => {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

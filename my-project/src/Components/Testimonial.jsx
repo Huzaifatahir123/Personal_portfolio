@@ -14,10 +14,45 @@ const Testimonial = () => {
       const scale = useSpring(scaleXy,{damping:70,
                         stiffness:300,
                         })
-  const testimonials = [
-    { bgcolor:"bg-black",color:"white", id: 1, img: assets.Logo, desc: "The MERN stack projects here are incredible. The attention to detail in the UI/UX and the smooth Framer Motion transitions make the experience truly premium." , Name:"Flora Sheen" , Designation:"UI Designer"},
-    { id: 2, img: assets.HeroImg, desc: "Working on this chat application was a game-changer. The backend architecture is solid, and the frontend animations are buttery smooth." , Name:"Huzaifa" , Designation:"Full-Stack Developer",color:"black",bgcolor:"white"},
-  ];
+const testimonials = [
+ 
+  { 
+    id: 1, 
+    img: assets.Women, 
+    bgcolor: "bg-zinc-900", 
+    color: "white", 
+    Name: "Rabia Ahmed", 
+    Designation: "Designer",
+    desc: "The implementation of Framer Motion here is some of the best I've seen. It’s not just about the 'wow' factor; the animations actually improve the usability and flow of the entire application." 
+  },
+  { 
+    id: 2, 
+    img: assets.Men, 
+    bgcolor: "white", 
+    color: "black", 
+    Name: "Amjad Bashir", 
+    Designation: "Accountant",
+    desc: "We needed a developer who understood both the aesthetic and the performance side of a MERN application. The result was a lightning-fast, sleek interface that our users absolutely love." 
+  },
+  { 
+    id: 3, 
+    img: assets.Women, 
+    bgcolor: "bg-black", 
+    color: "white", 
+    Name: "Areeba Batool", 
+    Designation: "Product Manager",
+    desc: "Rarely do you find a portfolio that balances complex backend logic with such a refined frontend. The Chat App’s real-time capabilities are robust, reliable, and incredibly polished." 
+  },
+  { 
+    id: 4, 
+    img: assets.Men, 
+    bgcolor: "white", 
+    color: "black", 
+    Name: "Ahmed Bilal", 
+    Designation: "Frontend Lead",
+    desc: "I was impressed by the clean code structure and the deep understanding of Data Structures. It's clear that performance optimization was a priority from day one of development." 
+  },
+];
 
   const [[counter, direction], setCounter] = useState([0, 0]);
   const currentTestimonial = testimonials[counter];
@@ -63,7 +98,7 @@ const Testimonial = () => {
   };
 
   return (
-    <motion.div ref={ref} className='px-6 py-24 flex flex-col gap-12 justify-center items-center   perspective-1000'>
+    <motion.section id='Testimonial' ref={ref} className='px-6 py-24 flex flex-col gap-12 justify-center items-center   perspective-1000'>
       <h1 className='text-5xl text-black font-bold tracking-tight'>Testimonials</h1>
 
       <motion.div style={{scale}} className='relative w-full max-w-md h-[480px] flex items-center justify-center'>
@@ -125,7 +160,7 @@ const Testimonial = () => {
           <ArrowRight size={24} />
         </button>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

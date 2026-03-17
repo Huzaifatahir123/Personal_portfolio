@@ -4,6 +4,9 @@
 :root{
     font-family: "Sora";
 }
+html{
+    scroll-behavior: smooth;
+}
 @theme{
     --color-primary:#000000;
     --color-text:#FFFFFF;
