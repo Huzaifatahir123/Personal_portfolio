@@ -45,7 +45,7 @@ const Experience = () => {
           <motion.div
             key={i}
             style={{ y: ele.y, opacity }}
-            className="group relative border border-white rounded-sm flex flex-col gap-6 p-8   "
+            className="group relative border border-dashed border-white rounded-sm flex flex-col gap-6 p-8   "
           >
             {/* Subtle Glow Effect */}
             <div className="absolute rounded-xl " />

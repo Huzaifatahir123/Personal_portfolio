@@ -51,7 +51,7 @@ const Skills = () => {
                       })
 
                     return (
-                    <motion.div key={index} style={{x}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border-2 border-text-secondary p-2">
+                    <motion.div key={index} style={{x}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border border-dashed border-text-secondary p-2">
                          <motion.img style={{opacity,scale}} src={icon} alt="" />
                          <motion.h1 className="text-sm">{skill}</motion.h1>
                     </motion.div>
