@@ -43,17 +43,17 @@ const AboutUs = () => {
         <div className="w-full md:w-1/2 relative group">
           <motion.div 
             style={{ y: springImgY }}
-            className="relative z-10 overflow-hidden rounded-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700"
+            className="relative z-10 overflow-hidden  transition-all duration-700"
           >
             <img 
               src={assests.AboutPic} 
               alt="About Profile" 
-              className="w-full h-auto object-cover scale-110 group-hover:scale-100 transition-transform duration-1000"
+              className="w-full h-auto object-cover scale-100 group-hover:scale-100 transition-transform duration-1000"
             />
           </motion.div>
           
           {/* Decorative background element */}
-          <div className="absolute -bottom-6 -right-6 w-full h-full border border-zinc-800 rounded-2xl -z-0 transition-all duration-500 group-hover:-bottom-4 group-hover:-right-4" />
+       
         </div>
 
         {/* High-End Text Reveal Section */}

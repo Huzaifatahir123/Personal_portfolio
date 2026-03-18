@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <section ref={scope} className="relative">
-      <div className='px-6 py-6 sm:px-14 md:px-16 lg:px-28 z-50 relative'>
+      <div className='px-6 py-6 sm:px-14 md:px-16 lg:px-28  relative'>
         {/* Added .border-container class for animation */}
         <div className={`border-container border border-dashed border-black flex justify-between items-center px-4 py-2 transition-colors duration-300`}>
           <div className='flex gap-2 items-center'>
@@ -58,7 +58,7 @@ const Navbar = () => {
 
           <div 
             onClick={() => setIsOpen(!isOpen)} 
-            className='flex flex-col justify-center items-center cursor-pointer gap-1.5 w-10 h-10'
+            className='flex flex-col justify-center z-50 items-center cursor-pointer gap-1.5 w-10 h-10'
           >
             <a className="line-1 w-8 h-1 cursor-pointer bg-black" />
             <a className="line-2 w-8 h-1 cursor-pointer bg-black" />
@@ -71,14 +71,31 @@ const Navbar = () => {
         style={{ clipPath: "circle(0% at 100% 0%)" }}
       >
         {links.map((ele, i) => (
-          <a  onClick={() => setIsOpen(!isOpen)} 
-            key={i} 
-            className="nav-link italic font-bold uppercase tracking-tighter relative max-sm:text-[40px] text-[50px] text-white opacity-0 translate-y-8 " 
-            href={ele.link}
-          >
-            {ele.Name}
-          </a>
-        ))}
+  <div key={i} className="overflow-hidden py-2">
+    <a 
+      onClick={() => setIsOpen(!isOpen)} 
+      className="nav-link group relative block overflow-hidden transition-all duration-500" 
+      href={ele.link}
+    >
+      {/* Container for the sliding text */}
+      <div className="relative flex flex-col transition-transform duration-500 ease-[0.76, 0, 0.24, 1] group-hover:-translate-y-full">
+        
+        {/* State 1: Default Text */}
+        <span className="text-[50px] max-sm:text-[40px] text-white font-bold uppercase italic tracking-tighter leading-none">
+          {ele.Name}
+        </span>
+
+        {/* State 2: Hover Text (Slides up from below) */}
+        <span className="absolute top-full left-0 text-[50px] max-sm:text-[40px] text-zinc-500 font-bold uppercase italic tracking-tighter leading-none">
+          {ele.Name}
+        </span>
+      </div>
+
+      {/* Optional: The "Awwwards" underline that grows from center */}
+      <span className="absolute bottom-0 left-0 h-[2px] w-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+    </a>
+  </div>
+))}
       </div>
     </section>
   );

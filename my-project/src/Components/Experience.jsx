@@ -90,10 +90,12 @@ const Experience = () => {
 
             {/* Right Side: Content */}
             <div className="md:w-3/4 flex flex-col justify-center">
-              <div className="flex justify-between items-start">
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4 group-hover:text-zinc-300 transition-colors">
+              <div className="flex overflow-hidden justify-between items-start">
+                <motion.h2 initial={{ y: "100%" }}
+                                            whileInView={{ y: 0 }}
+                                            transition={{ duration: 0.5 }} className="text-2xl md:text-4xl font-bold tracking-tight mb-4 group-hover:text-zinc-300 transition-colors">
                   {exp.title}
-                </h2>
+                </motion.h2>
                 <ArrowUpRight className="text-zinc-700 group-hover:text-white transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
               <p className="text-zinc-400 text-lg leading-relaxed max-w-2xl">

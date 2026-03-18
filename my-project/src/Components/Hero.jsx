@@ -25,27 +25,27 @@ const Hero = () => {
   };
 
   return (
-    <section className="bg-white text-black min-h-screen flex items-center overflow-hidden">
+    <section className="bg-white text-black min-h-screen flex  items-center overflow-hidden">
       <motion.div 
         variants={containerVars}
         initial="initial"
         animate="animate"
-        className="px-12 sm:px-14 md:px-16 lg:px-28 w-full flex flex-col lg:flex-row items-center justify-between gap-10"
+        className="px-6 sm:px-14 md:px-16 lg:px-28 w-full flex flex-col lg:flex-row items-center justify-between gap-10"
       >
         {/* Text Content */}
-        <div className="flex flex-col justify-center py-20 lg:w-[50%]">
+        <div className="flex flex-col  justify-center py-20 lg:w-[50%]">
           
           <div className="overflow-hidden">
             <motion.div variants={itemVars} className="flex flex-wrap gap-2 items-baseline">
-              <h1 className="text-4xl md:text-5xl font-light">Hello I'm</h1>
-              <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">Huzaifa Tahir</h1>
+              <h1 className="text-xl sm:text-5xl font-light">Hello I'm</h1>
+              <h1 className="text-4xl sm:text-7xl font-black uppercase tracking-tighter">Huzaifa Tahir</h1>
             </motion.div>
           </div>
 
           <div className="overflow-hidden mt-2">
-            <motion.div variants={itemVars} className="flex gap-3 items-center">
+            <motion.div variants={itemVars} className="flex gap-3  items-center">
               <h1 className="text-4xl md:text-5xl font-black uppercase">FullStack</h1>
-              <span className="text-4xl md:text-4xl font-serif italic font-light text-zinc-400">Developer</span>
+              <span className="text-xl md:text-4xl font-serif italic font-light text-zinc-400">Developer</span>
             </motion.div>
           </div>
 

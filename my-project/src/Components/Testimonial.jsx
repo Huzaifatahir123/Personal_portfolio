@@ -151,7 +151,7 @@ const Testimonial = () => {
       </motion.div>
 
       {/* Modern Navigation */}
-      <div className='flex items-center gap-12 mt-10'>
+      <div className='flex items-center gap-12 mt-20'>
         <motion.button 
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.9 }}
