@@ -19,7 +19,7 @@ const Navbar = () => {
       
       // 4. Background & Links
       animate(".menu-overlay", { clipPath: "circle(150% at 100% 0%)" }, { duration: 0.7, ease: [0.37, 0, 0.63, 1] });
-      animate(".nav-link", { opacity: 1, x: 0, scale: 1 }, { duration: 0.4, ease: "easeInOut", delay: stagger(0.1, { startDelay: 0.1 }) });
+      animate(".nav-link", { opacity: 1, y: 0, scale: 1 }, { duration: 0.4, ease: "easeInOut", delay: stagger(0.15, {  }) });
             animate(".huzaifa", { color: "#fff" ,scale:1.2 }, { duration: 0.3  ,ease:"easeIn" });
 
       // 2. Animate Border (Dashed effect)
@@ -34,7 +34,7 @@ const Navbar = () => {
       animate(".border-container", { borderColor: "#000" }, { duration: 0.3, delay: 0.5 });
 
       // 2. Close Links (Last to First)
-      animate(".nav-link", { opacity: 0, x: 120, scale: 0 }, { duration: 0.4, ease: "easeInOut", delay: stagger(0.1, { from: "last" }) });
+      animate(".nav-link", { opacity: 0, y: 120, scale: 1 }, { duration: 0.4, ease: "easeInOut", delay: stagger(0.1, { from: "last" }) });
       
       // 3. Close Overlay
       animate(".menu-overlay", { clipPath: "circle(0% at 100% 0%)" }, { duration: 0.5, ease: "easeOut", delay: 0.5 });
