@@ -41,19 +41,22 @@ const Skills = () => {
                       const start = index * 0.08; 
                       const end = start + 0.1;
                       const opacity = useTransform(scrollYProgress, [start, end > 1 ? 1 : end],[0, 1]
-  );                  const scale = useTransform(scrollYProgress, [start, end > 1 ? 1 : end], [0.5, 1 ]);
+  );                  const scale = useTransform(scrollYProgress, [start, end > 1 ? 1 : end], [0.8, 1 ]);
  
-                      const xValue  = useTransform(scrollYProgress,[stagerStart, stagetEnd > 1 ? 1 : stagetEnd],[isLeft ? -150 : 150 , 0 ])
-                      const x = useSpring(xValue,{
+                      const xValue  = useTransform(scrollYProgress,[stagerStart, stagetEnd > 1 ? 1 : stagetEnd],[50 , 0 ])
+                      const y = useSpring(xValue,{
                         damping:70,
                         stiffness:300,
                         
                       })
 
                     return (
-                    <motion.div key={index} style={{x}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border border-dashed border-text-secondary p-2">
-                         <motion.img style={{opacity,scale}} src={icon} alt="" />
-                         <motion.h1 className="text-sm">{skill}</motion.h1>
+                    <motion.div key={index} style={{y}} className="flex -z-10 flex-col w-32 rounded-xs gap-2 sm:w-44 border  border-text-secondary p-2">
+                         <motion.img style={{scale}} src={icon} alt="" />
+                         <motion.h1 initial={{ y: "100%" }}
+                                            whileInView={{ y: 0 }}
+                                            viewport={{amount:0.5}}
+                                            transition={{ duration: 0.5 }} className="text-sm font-bold">{skill}</motion.h1>
                     </motion.div>
                     )
 })

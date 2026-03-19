@@ -39,7 +39,7 @@ const CustomCursor = () => {
       {
       }
       <motion.div
-        className="fixed max-sm:hidden top-0 left-0 w-3 h-3 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed max-sm:hidden top-0 left-0 w-3 h-3 bg-red-500 rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{ x: cursorX, y: cursorY, translateX: '-50%', translateY: '-50%' }}
       />
       
